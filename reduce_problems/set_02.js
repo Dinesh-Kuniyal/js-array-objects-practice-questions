@@ -1,3 +1,20 @@
+// zip(["a", "b", "c"], [1, 2, 3]) => { "a": 1, "b": 2, "c": 3 }
+const zip = function (keys, values) {
+  const remaining = [...values];
+
+  return keys.reduce(function (existingObject, key) {
+    const object = { ...existingObject };
+    object[key] = remaining[0];
+    remaining.shift();
+
+    return object;
+  }, {});
+};
+
+console.log(zip(["a", "b", "c"], [1, 2, 3]));
+
+console.log = () => { };
+
 // makeObject(["city", "country"], ["Paris", "France"]) => { "city": "Paris", "country": "France" }
 const makeObject = function (keys, values) {
   const remaining = [...values];
@@ -13,8 +30,6 @@ const makeObject = function (keys, values) {
 
 console.log(makeObject(["city", "country"], ["Paris", "France"]));
 console.log(makeObject(["city"], ["Delhi"]));
-
-console.log = () => { };
 
 // groupByFirstLetter(["apple", "banana", "cherry", "date"]) => { a: ["apple"], b: ["banana"], c: ["cherry"], d: ["date"] }
 const groupByFirstLetter = function (words) {
