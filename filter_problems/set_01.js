@@ -1,3 +1,33 @@
+// Find items in an inventory whose quantity is greater than 10 based on the lookup object.
+// Input: ["item1", "item2", "item3"], { "item1": { quantity: 15 }, "item2": { quantity: 5 }, "item3": { quantity: 20 } }
+// Output: ["item1", "item3"]
+
+const isInEnoughQuantity = function (lookup, threshhold) {
+
+  return function (itemName) {
+    return (itemName in lookup && lookup[itemName].quantity) > threshhold;
+  };
+};
+
+const findInStockItems = function (items, lookup) {
+  return items.filter(isInEnoughQuantity(lookup, 10));
+};
+
+console.log(findInStockItems(["item1", "item2", "item3"],
+  {
+    "item1": { quantity: 15 },
+    "item2": { quantity: 5 },
+    "item3": { quantity: 20 }
+  }));
+
+console.log(findInStockItems(["item1", "item2", "item3"],
+  {
+    "item1": { quantity: 5 },
+    "item3": { quantity: 20 }
+  }));
+
+console.log = function () { };
+
 // Find animals whose habitat matches the required type from the lookup object.
 // Input: ["Lion", "Elephant", "Shark"], { "Lion": { habitat: "Jungle" }, "Elephant": { habitat: "Jungle" }, "Shark": { habitat: "Ocean" } } , "Jungle"
 // Output: ["Lion", "Elephant"]
@@ -32,8 +62,6 @@ console.log(findAnimalsByHabitat(
     "Tigris": { habitat: "Jungle" }
   },
   "Jungle"));
-
-console.log = function () { };
 
 // active users [{use2,rname: "alice", active: true}, {username: "bob", active: false}] => [{username: "alice", active: true}]
 const isUserActive = function (user) {
