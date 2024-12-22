@@ -1,3 +1,24 @@
+// Find numbers that are marked as 'valid' in the lookup object.
+// Input: [10, 20, 30, 40], {10: "valid", 20: "invalid", 30: "valid", 40: "valid"}
+// Output: [10, 30, 40]
+const isNumberValid = function (lookup) {
+  return function (number) {
+    return (number in lookup && lookup[number]) === 'valid';
+  };
+};
+
+const findValidNumbers = function (numbers, lookup) {
+  return numbers.filter(isNumberValid(lookup));
+};
+
+console.log(findValidNumbers([10, 20, 30, 40],
+  { 10: "valid", 20: "invalid", 30: "valid", 40: "valid" }));
+
+console.log(findValidNumbers([10, 20, 30, 40],
+  { 10: "valid", 20: "invalid", 30: "valid" }));
+
+console.log = function () { };
+
 // Find items in an inventory whose quantity is greater than 10 based on the lookup object.
 // Input: ["item1", "item2", "item3"], { "item1": { quantity: 15 }, "item2": { quantity: 5 }, "item3": { quantity: 20 } }
 // Output: ["item1", "item3"]
@@ -25,8 +46,6 @@ console.log(findInStockItems(["item1", "item2", "item3"],
     "item1": { quantity: 5 },
     "item3": { quantity: 20 }
   }));
-
-console.log = function () { };
 
 // Find animals whose habitat matches the required type from the lookup object.
 // Input: ["Lion", "Elephant", "Shark"], { "Lion": { habitat: "Jungle" }, "Elephant": { habitat: "Jungle" }, "Shark": { habitat: "Ocean" } } , "Jungle"
