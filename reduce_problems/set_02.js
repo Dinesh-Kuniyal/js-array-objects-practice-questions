@@ -1,3 +1,25 @@
+const countFrequency = function (array, element) {
+  return array.reduce(function (frequency, number) {
+    return number === element ? frequency + 1 : frequency;
+  }, 0);
+};
+
+// countOccurrences(["apple", "banana", "cherry", "banana"]) => { apple: 1, banana: 2, cherry: 1 }
+const countOccurrences = function (strings) {
+  return strings.reduce(function (previousObject, string) {
+    const object = { ...previousObject };
+    const occurences = string in previousObject ? previousObject[string] : countFrequency(strings, string);
+    object[string] = occurences;
+
+    return object;
+  }, {});
+};
+
+console.log(countOccurrences(["apple"]));
+console.log(countOccurrences(["apple", "banana", "cherry", "banana"]));
+console.log(countOccurrences(["apple", "banana", "cherry", "banana", "cherry"]));
+console.log = () => { };
+
 // zip(["a", "b", "c"], [1, 2, 3]) => { "a": 1, "b": 2, "c": 3 }
 const zip = function (keys, values) {
   const remaining = [...values];
@@ -12,8 +34,6 @@ const zip = function (keys, values) {
 };
 
 console.log(zip(["a", "b", "c"], [1, 2, 3]));
-
-console.log = () => { };
 
 // makeObject(["city", "country"], ["Paris", "France"]) => { "city": "Paris", "country": "France" }
 const makeObject = function (keys, values) {
@@ -46,12 +66,6 @@ const groupByFirstLetter = function (words) {
 
 console.log(groupByFirstLetter(["apple", "banana", "cherry", "date"]));
 console.log(groupByFirstLetter(["apple", "banana", "cherry", "date", "chocolate"]));
-
-const countFrequency = function (array, element) {
-  return array.reduce(function (frequency, number) {
-    return number === element ? frequency + 1 : frequency;
-  }, 0);
-};
 
 // countVowels(["apple", "banana", "grape"]) => { a: 6, e: 3, i: 0, o: 0, u: 0 }
 
