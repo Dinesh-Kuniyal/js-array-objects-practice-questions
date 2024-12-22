@@ -1,8 +1,38 @@
+// topKFrequent([1,1,1,2,2,3], 2) => [1, 2]
+const countFrequency = function (array, target) {
+  return array.reduce(function (frequency, number) {
+    return number === target ? frequency + 1 : frequency;
+  }, 0);
+};
+
+const topKFrequent = function (numbers, k) {
+  return numbers.reduce(function (frequentNumbers, number) {
+    const isAlreadyCounted = frequentNumbers.includes(number);
+
+    if (isAlreadyCounted) {
+      return frequentNumbers;
+    }
+
+    const frequency = countFrequency(numbers, number);
+    if (frequency >= k) {
+      return [...frequentNumbers, number];
+    }
+
+    return frequentNumbers;
+  }, []);
+};
+
+console.log(topKFrequent([], 1));
+console.log(topKFrequent([1, 1, 1, 2, 2, 3], 2));
+console.log(topKFrequent([1, 1, 1, 2, 2, 3], 1));
+
+console.log = function () { };
+
 // cartesianProduct([1, 2], ['a', 'b']) => [[1, 'a'], [1, 'b'], [2, 'a'], [2, 'b']]
 const cartesianProduct = function (arr1, arr2) {
   return arr1.reduce(function (product, number) {
-    const presentPairProduct = arr2.map(function (nested) {
-      return [number, nested];
+    const presentPairProduct = arr2.map(function (character) {
+      return [number, character];
     });
 
     return [...product, ...presentPairProduct];
@@ -12,8 +42,6 @@ const cartesianProduct = function (arr1, arr2) {
 console.log(cartesianProduct([1, 2], []));
 console.log(cartesianProduct([1, 2], ['a']));
 console.log(cartesianProduct([1, 2], ['a', 'b']));
-
-console.log = function () { };
 
 // groupByDate([{ date: '2024-01-01', value: 10 },
 // { date: '2024-01-01', value: 20 },
