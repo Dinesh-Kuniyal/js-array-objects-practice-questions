@@ -1,3 +1,19 @@
+// active users [{username: "alice", active: true}, {username: "bob", active: false}] => [{username: "alice", active: true}]
+const isUserActive = function (user) {
+  return user.active;
+};
+
+const filterActiveUsers = function (users) {
+  return users.filter(isUserActive);
+};
+
+console.log(filterActiveUsers([]));
+console.log(filterActiveUsers([{ username: "alice", active: true }, { username: "bob", active: false }]));
+console.log(filterActiveUsers([{ username: "alice", active: true }, { username: "bob", active: true }]));
+console.log(filterActiveUsers([{ username: "alice", active: false }, { username: "bob", active: false }]));
+
+console.log = function () { };
+
 // people older than 30 [{name: "Alice", age: 25}, {name: "Bob", age: 35}] => [{name: "Bob", age: 35}]
 const isPersonAdult = function (person) {
   return person.age > 30;
@@ -11,8 +27,6 @@ console.log(filterAdults([]));
 console.log(filterAdults([{ name: "Alice", age: 25 }, { name: "Bob", age: 35 }]));
 console.log(filterAdults([{ name: "Alice", age: 25 }, { name: "Bob", age: 20 }]));
 console.log(filterAdults([{ name: "Alice", age: 35 }, { name: "Bob", age: 45 }]));
-
-console.log = function () { };
 
 // words with more than 5 letters ["apple", "banana", "kiwi", "grape"] => ["banana"]
 const isStringLong = function (string) {
