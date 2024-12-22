@@ -1,3 +1,16 @@
+// mergeConsecutiveDuplicates([1,1,1,2,3,3,4]) => [1,2,3,4]
+const mergeConsecutiveDuplicates = function (array) {
+  return array.reduce(function (uniques, number) {
+
+    return uniques.at(-1) !== number ? [...uniques, number] : uniques;
+  }, []);
+};
+
+console.log(mergeConsecutiveDuplicates([1, 1, 1, 2, 3, 3, 4]));
+console.log(mergeConsecutiveDuplicates([0, 1, 1, 1, 2, 3, 3, 4]));
+
+console.log = () => { };
+
 // longestConsecutiveSubsequence([1, 2, 0, 1, 3, 4, 5]) => [0, 1, 2, 3, 4, 5]
 const createSubsequence = function (acc, number) {
   const sequence = { ...acc };
@@ -27,8 +40,6 @@ const longestConsecutiveSubsequence = function (numbers) {
 console.log(longestConsecutiveSubsequence([1, 2, 0, 1, 3, 4, 5]));
 console.log(longestConsecutiveSubsequence([1, 2, 3, 4, 5, 6, 1, 3, 4, 5]));
 console.log(longestConsecutiveSubsequence([0, 0, 1, 0, 1]));
-
-console.log = () => { };
 
 // topKFrequent([1,1,1,2,2,3], 2) => [1, 2]
 const countFrequency = function (array, target) {
