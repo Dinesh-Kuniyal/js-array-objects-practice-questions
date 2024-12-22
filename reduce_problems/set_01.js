@@ -12,9 +12,9 @@ console.log(mergeConsecutiveDuplicates([0, 1, 1, 1, 2, 3, 3, 4]));
 console.log = () => { };
 
 // longestConsecutiveSubsequence([1, 2, 0, 1, 3, 4, 5]) => [0, 1, 2, 3, 4, 5]
-const createSubsequence = function (acc, number) {
-  const sequence = { ...acc };
-  const lastElement = acc.currentSequence ? acc.currentSequence.at(-1) : 0;
+const createSubsequence = function (seq, number) {
+  const sequence = { ...seq };
+  const lastElement = seq.currentSequence ? seq.currentSequence.at(-1) : 0;
 
   if (number > lastElement) {
     sequence.currentSequence = [...sequence.currentSequence, number];
