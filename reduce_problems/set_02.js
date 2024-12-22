@@ -1,3 +1,21 @@
+// groupByFirstLetter(["apple", "banana", "cherry", "date"]) => { a: ["apple"], b: ["banana"], c: ["cherry"], d: ["date"] }
+const groupByFirstLetter = function (words) {
+  return words.reduce(function (prev, word) {
+    const initial = word[0];
+    const group = { ...prev };
+    
+    const existing = (initial in prev && [...group[initial], word]) || [word];
+    group[initial] = existing;
+
+    return group;
+  }, {});
+};
+
+console.log(groupByFirstLetter(["apple", "banana", "cherry", "date"]));
+console.log(groupByFirstLetter(["apple", "banana", "cherry", "date", "chocolate"]));
+
+console.log = () => { };
+
 const countFrequency = function (array, element) {
   return array.reduce(function (frequency, number) {
     return number === element ? frequency + 1 : frequency;
