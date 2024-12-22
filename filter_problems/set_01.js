@@ -1,3 +1,24 @@
+const isEven = function (number) {
+  return number % 2 === 0;
+};
+
+// Filter numbers from the first array that are present in the second array and are even
+// Input: [1, 2, 3, 4, 5], [2, 4, 6]
+// Output: [2, 4]
+const isBelongToCriteria = function (criteria) {
+  return function (number) {
+    return criteria.includes(number) && isEven(number);
+  };
+};
+
+const filterEvenNumbersByMembership = function (numbers, criteria) {
+  return numbers.filter(isBelongToCriteria(criteria));
+};
+
+console.log(filterEvenNumbersByMembership([1, 2, 3, 4, 5], [2, 4, 6]));
+
+console.log = function () { };
+
 // Find numbers that are marked as 'valid' in the lookup object.
 // Input: [10, 20, 30, 40], {10: "valid", 20: "invalid", 30: "valid", 40: "valid"}
 // Output: [10, 30, 40]
@@ -16,8 +37,6 @@ console.log(findValidNumbers([10, 20, 30, 40],
 
 console.log(findValidNumbers([10, 20, 30, 40],
   { 10: "valid", 20: "invalid", 30: "valid" }));
-
-console.log = function () { };
 
 // Find items in an inventory whose quantity is greater than 10 based on the lookup object.
 // Input: ["item1", "item2", "item3"], { "item1": { quantity: 15 }, "item2": { quantity: 5 }, "item3": { quantity: 20 } }
@@ -125,10 +144,6 @@ console.log(filterLongWords(["apple", "kiwi", "grape"]));
 console.log(filterLongWords(["banana", "pineapple"]));
 
 // even numbers [1, 2, 3, 4, 5] => [2, 4]
-const isEven = function (number) {
-  return number % 2 === 0;
-};
-
 const filterEvenNumbers = function (numbers) {
   return numbers.filter(isEven);
 };
