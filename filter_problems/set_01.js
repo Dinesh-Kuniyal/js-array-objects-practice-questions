@@ -23,6 +23,7 @@ console.log(findAnimalsByHabitat(
     "Shark": { habitat: "Ocean" }
   },
   "Jungle"));
+
 console.log(findAnimalsByHabitat(
   ["Lion", "Elephant", "Shark", "Tigris"],
   {
