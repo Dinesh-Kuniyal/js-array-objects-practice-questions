@@ -7,7 +7,6 @@ const groupByDate = function (records) {
   return records.reduce((group, { date, value }) => {
 
     const newGroup = { ...group };
-
     const existingValue = (date in newGroup && newGroup[date]) || [];
 
     newGroup[date] = [...existingValue, value];
