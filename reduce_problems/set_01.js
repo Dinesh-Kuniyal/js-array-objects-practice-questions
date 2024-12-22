@@ -1,3 +1,35 @@
+// longestConsecutiveSubsequence([1, 2, 0, 1, 3, 4, 5]) => [0, 1, 2, 3, 4, 5]
+const createSubsequence = function (acc, number) {
+  const sequence = { ...acc };
+  const lastElement = acc.currentSequence ? acc.currentSequence.at(-1) : 0;
+
+  if (number > lastElement) {
+    sequence.currentSequence = [...sequence.currentSequence, number];
+
+    if (sequence.currentSequence.length > sequence.largestSequence.length) {
+      sequence.largestSequence = sequence.currentSequence;
+    }
+
+    return sequence;
+  }
+
+  return {
+    largestSequence: sequence.largestSequence, currentSequence: [number]
+  };
+};
+
+const longestConsecutiveSubsequence = function (numbers) {
+  const defaultValue = { largestSequence: [], currentSequence: [] };
+
+  return numbers.reduce(createSubsequence, defaultValue).largestSequence;
+};
+
+console.log(longestConsecutiveSubsequence([1, 2, 0, 1, 3, 4, 5]));
+console.log(longestConsecutiveSubsequence([1, 2, 3, 4, 5, 6, 1, 3, 4, 5]));
+console.log(longestConsecutiveSubsequence([0, 0, 1, 0, 1]));
+
+console.log = () => { };
+
 // topKFrequent([1,1,1,2,2,3], 2) => [1, 2]
 const countFrequency = function (array, target) {
   return array.reduce(function (frequency, number) {
@@ -25,8 +57,6 @@ const topKFrequent = function (numbers, k) {
 console.log(topKFrequent([], 1));
 console.log(topKFrequent([1, 1, 1, 2, 2, 3], 2));
 console.log(topKFrequent([1, 1, 1, 2, 2, 3], 1));
-
-console.log = function () { };
 
 // cartesianProduct([1, 2], ['a', 'b']) => [[1, 'a'], [1, 'b'], [2, 'a'], [2, 'b']]
 const cartesianProduct = function (arr1, arr2) {
