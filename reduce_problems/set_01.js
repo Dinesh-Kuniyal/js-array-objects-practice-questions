@@ -1,3 +1,20 @@
+// cartesianProduct([1, 2], ['a', 'b']) => [[1, 'a'], [1, 'b'], [2, 'a'], [2, 'b']]
+const cartesianProduct = function (arr1, arr2) {
+  return arr1.reduce(function (product, number) {
+    const presentPairProduct = arr2.map(function (nested) {
+      return [number, nested];
+    });
+
+    return [...product, ...presentPairProduct];
+  }, []);
+};
+
+console.log(cartesianProduct([1, 2], []));
+console.log(cartesianProduct([1, 2], ['a']));
+console.log(cartesianProduct([1, 2], ['a', 'b']));
+
+console.log = function () { };
+
 // groupByDate([{ date: '2024-01-01', value: 10 },
 // { date: '2024-01-01', value: 20 },
 // { date: '2024-01-02', value: 30 }])
@@ -26,8 +43,6 @@ console.log(groupByDate([
   { date: '2024-01-01', value: 20 },
   { date: '2024-01-01', value: 30 }
 ]));
-
-console.log = function () { };
 
 // findMinMax([1, 2, 3, 4, 5]) => { min: 1, max: 5 }
 const findMinMax = function (numbers) {
