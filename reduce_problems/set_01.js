@@ -8,8 +8,8 @@ const sumByCategory = function (items) {
   return items.reduce(function (categoriesSum, item) {
 
     const newSum = { ...categoriesSum };
-    const existingSum = (item.category in newSum && newSum[item.category]) || 0;
-    newSum[item.category] = item.value + existingSum;
+    const categorySum = (item.category in newSum && newSum[item.category]) || 0;
+    newSum[item.category] = item.value + categorySum;
 
     return newSum;
   }, defaultValue);
