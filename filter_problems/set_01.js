@@ -1,3 +1,24 @@
+// Filter numbers from the first array that fall within a range specified by a pair in the second array
+// Input: [1, 2, 3, 4, 5], [[2, 4]]
+// Output: [2, 3, 4]
+
+/* TODO: Need more clarification about second arg */
+const isNumberInRange = function ([start, end]) {
+  return function (number) {
+    return number >= start && number <= end;
+  };
+};
+
+const filterByRange = function (numbers, ranges) {
+  return numbers.filter(isNumberInRange(ranges));
+};
+
+console.log(filterByRange([1, 2, 3, 4, 5], [2, 4]));
+console.log(filterByRange([1, 2, 3, 4, 5], [2, 2]));
+console.log(filterByRange([1, 2, 3, 4, 5], [8, 9]));
+
+console.log = function () { };
+
 const isEven = function (number) {
   return number % 2 === 0;
 };
@@ -16,8 +37,6 @@ const filterEvenNumbersByMembership = function (numbers, criteria) {
 };
 
 console.log(filterEvenNumbersByMembership([1, 2, 3, 4, 5], [2, 4, 6]));
-
-console.log = function () { };
 
 // Find numbers that are marked as 'valid' in the lookup object.
 // Input: [10, 20, 30, 40], {10: "valid", 20: "invalid", 30: "valid", 40: "valid"}
