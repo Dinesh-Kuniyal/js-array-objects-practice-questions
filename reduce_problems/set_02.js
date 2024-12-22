@@ -1,9 +1,27 @@
+// makeObject(["city", "country"], ["Paris", "France"]) => { "city": "Paris", "country": "France" }
+const makeObject = function (keys, values) {
+  const remaining = [...values];
+
+  return keys.reduce(function (existingObject, key) {
+    const object = { ...existingObject };
+    object[key] = remaining[0];
+    remaining.shift();
+
+    return object;
+  }, {});
+};
+
+console.log(makeObject(["city", "country"], ["Paris", "France"]));
+console.log(makeObject(["city"], ["Delhi"]));
+
+console.log = () => { };
+
 // groupByFirstLetter(["apple", "banana", "cherry", "date"]) => { a: ["apple"], b: ["banana"], c: ["cherry"], d: ["date"] }
 const groupByFirstLetter = function (words) {
   return words.reduce(function (prev, word) {
     const initial = word[0];
     const group = { ...prev };
-    
+
     const existing = (initial in prev && [...group[initial], word]) || [word];
     group[initial] = existing;
 
@@ -13,8 +31,6 @@ const groupByFirstLetter = function (words) {
 
 console.log(groupByFirstLetter(["apple", "banana", "cherry", "date"]));
 console.log(groupByFirstLetter(["apple", "banana", "cherry", "date", "chocolate"]));
-
-console.log = () => { };
 
 const countFrequency = function (array, element) {
   return array.reduce(function (frequency, number) {
