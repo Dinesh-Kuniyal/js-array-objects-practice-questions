@@ -1,4 +1,40 @@
-// active users [{username: "alice", active: true}, {username: "bob", active: false}] => [{username: "alice", active: true}]
+// Find animals whose habitat matches the required type from the lookup object.
+// Input: ["Lion", "Elephant", "Shark"], { "Lion": { habitat: "Jungle" }, "Elephant": { habitat: "Jungle" }, "Shark": { habitat: "Ocean" } } , "Jungle"
+// Output: ["Lion", "Elephant"]
+
+const isAnimalBelongToHabitat = function (lookup, habitat) {
+
+  return function (animal) {
+    const animalHabitat = animal in lookup && lookup[animal].habitat || '';
+
+    return animalHabitat === habitat;
+  };
+};
+
+const findAnimalsByHabitat = function (animals, lookup, habitat) {
+  return animals.filter(isAnimalBelongToHabitat(lookup, habitat));
+};
+
+console.log(findAnimalsByHabitat(
+  ["Lion", "Elephant", "Shark"],
+  {
+    "Lion": { habitat: "Jungle" },
+    "Elephant": { habitat: "Jungle" },
+    "Shark": { habitat: "Ocean" }
+  },
+  "Jungle"));
+console.log(findAnimalsByHabitat(
+  ["Lion", "Elephant", "Shark", "Tigris"],
+  {
+    "Lion": { habitat: "Jungle" },
+    "Elephant": { habitat: "Jungle" },
+    "Tigris": { habitat: "Jungle" }
+  },
+  "Jungle"));
+
+console.log = function () { };
+
+// active users [{use2,rname: "alice", active: true}, {username: "bob", active: false}] => [{username: "alice", active: true}]
 const isUserActive = function (user) {
   return user.active;
 };
@@ -11,8 +47,6 @@ console.log(filterActiveUsers([]));
 console.log(filterActiveUsers([{ username: "alice", active: true }, { username: "bob", active: false }]));
 console.log(filterActiveUsers([{ username: "alice", active: true }, { username: "bob", active: true }]));
 console.log(filterActiveUsers([{ username: "alice", active: false }, { username: "bob", active: false }]));
-
-console.log = function () { };
 
 // people older than 30 [{name: "Alice", age: 25}, {name: "Bob", age: 35}] => [{name: "Bob", age: 35}]
 const isPersonAdult = function (person) {
