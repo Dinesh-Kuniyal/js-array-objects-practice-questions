@@ -1,3 +1,15 @@
+// flattenArray([[1, 2], [3, 4], [5, 6]]) => [1, 2, 3, 4, 5, 6]
+const flattenArray = function (arrays) {
+  return arrays.reduce(function (flattenArray, subArray) {
+    return [...flattenArray, ...subArray];
+  }, []);
+};
+
+console.log(flattenArray([[1, 2], [3, 4], [5, 6]]));
+console.log(flattenArray([[1], [3, 4], [5, 6, 8], []]));
+
+console.log = () => { };
+
 const countFrequency = function (array, element) {
   return array.reduce(function (frequency, number) {
     return number === element ? frequency + 1 : frequency;
@@ -18,7 +30,6 @@ const countOccurrences = function (strings) {
 console.log(countOccurrences(["apple"]));
 console.log(countOccurrences(["apple", "banana", "cherry", "banana"]));
 console.log(countOccurrences(["apple", "banana", "cherry", "banana", "cherry"]));
-console.log = () => { };
 
 // zip(["a", "b", "c"], [1, 2, 3]) => { "a": 1, "b": 2, "c": 3 }
 const zip = function (keys, values) {
