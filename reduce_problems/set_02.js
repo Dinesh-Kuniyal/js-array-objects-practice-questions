@@ -1,3 +1,20 @@
+// makeCamelCase(["hello", "world", "how", "are", "you"]) => "helloWorldHowAreYou"
+const makeCamelCase = function (words) {
+  const capitalize = words.reduce(function (capitalizeWord, word) {
+    const [initial, ...restWord] = [...word];
+
+    return capitalizeWord + initial.toUpperCase() + restWord.join('');
+  }, '');
+
+  const [initial, ...restWord] = [...capitalize];
+
+  return initial.toLowerCase() + restWord.join('');
+};
+
+console.log(makeCamelCase(["hello", "world", "how", "are", "you"]));
+console.log(makeCamelCase(['namaste', 'duniya']));
+console.log = () => { };
+
 // reverseString(["apple", "banana", "cherry"]) => "elppaananabyrrehc"
 const reverseString = function (words) {
   return words.reduce(function (reverseWord, word) {
@@ -7,7 +24,6 @@ const reverseString = function (words) {
 
 console.log(reverseString(['ab', 'bc', 'de']));
 console.log(reverseString(["apple", "banana", "cherry"]));
-console.log = () => { };
 
 // flattenArray([[1, 2], [3, 4], [5, 6]]) => [1, 2, 3, 4, 5, 6]
 const flattenArray = function (arrays) {
