@@ -1,3 +1,29 @@
+// countVowelsInWords(["hello", "world"]) => "eoo"
+const isVowel = function (letter) {
+  const vowels = 'aeiouAEIOU';
+
+  return [...vowels].some(function (vowel) {
+    return vowel === letter;
+  });
+};
+
+const extractVowels = function (word) {
+  return [...word].reduce(function (vowels, letter) {
+
+    return isVowel(letter) ? vowels + letter : vowels;
+  }, '');
+};
+
+const countVowelsInWords = function (words) {
+  return words.reduce(function (vowlesInWord, word) {
+    return vowlesInWord + extractVowels(word);
+  }, '');
+};
+
+console.log(countVowelsInWords(["hello", "world"]));
+console.log(countVowelsInWords(["henry", "happy", "again"]));
+console.log = () => { };
+
 // makeCamelCase(["hello", "world", "how", "are", "you"]) => "helloWorldHowAreYou"
 const makeCamelCase = function (words) {
   const capitalize = words.reduce(function (capitalizeWord, word) {
@@ -13,7 +39,6 @@ const makeCamelCase = function (words) {
 
 console.log(makeCamelCase(["hello", "world", "how", "are", "you"]));
 console.log(makeCamelCase(['namaste', 'duniya']));
-console.log = () => { };
 
 // reverseString(["apple", "banana", "cherry"]) => "elppaananabyrrehc"
 const reverseString = function (words) {
