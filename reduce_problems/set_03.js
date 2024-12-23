@@ -1,3 +1,20 @@
+// invertObject({ "a": 1, "b": 2, "c": 3 }) => { 1: "a", 2: "b", 3: "c" }
+const invertObject = function (obj) {
+  const keys = Object.keys(obj);
+
+  return keys.reduce((result, key) => {
+    const keyName = obj[key];
+
+    const resultObject = { ...result };
+    resultObject[keyName] = key;
+
+    return resultObject;
+  }, {});
+};
+
+console.log(invertObject({ a: 1, b: 2, c: 3 }));
+console.log = () => {};
+
 // mergeObjects([{ a: 1, b: 2 }, { b: 3, c: 4 }, { a: 5 }]) => { a: 6, b: 5, c: 4 }
 const mergeObjects = function (objects) {
   return objects.reduce((result, object) => {
@@ -16,7 +33,6 @@ const mergeObjects = function (objects) {
 console.log(
   mergeObjects([{ a: 1, b: 2 }, { b: 3, c: 4, z: 2 }, { a: 5 }, { z: 1 }])
 );
-console.log = () => {};
 
 // sumAndCount([1, 2, 3, 4]) => { sum: 10, count: 4 }
 const sumAndCount = function (numbers) {
