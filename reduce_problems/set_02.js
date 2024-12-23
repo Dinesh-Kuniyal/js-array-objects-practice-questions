@@ -1,3 +1,13 @@
+// joinWordsWithSpace(["apple", "banana", "cherry"]) => "apple banana cherry"
+const joinWordsWithSpace = function (words) {
+  return words.reduce(function (wordsWithSpace, word) {
+    return wordsWithSpace.concat(word + ' ');
+  }, '').trim();;
+};
+
+console.log(joinWordsWithSpace(["apple", "banana", "cherry"]).trim());
+console.log = () => { };
+
 // countVowelsInWords(["hello", "world"]) => "eoo"
 const isVowel = function (letter) {
   const vowels = 'aeiouAEIOU';
