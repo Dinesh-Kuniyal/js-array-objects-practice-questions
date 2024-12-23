@@ -1,3 +1,13 @@
+// shortestWord(["apple", "banana", "cherry", "kiwi"]) => "kiwi"
+const shortestWord = function (words) {
+  return words.reduce(function (shortestWord, word) {
+    return word.length < shortestWord.length ? word : shortestWord;
+  }, { length: Infinity });
+};
+
+console.log(shortestWord(["apple", "banana", "cherry", "kiwi"]));
+console.log = () => { };
+
 // joinWordsWithSpace(["apple", "banana", "cherry"]) => "apple banana cherry"
 const joinWordsWithSpace = function (words) {
   return words.reduce(function (wordsWithSpace, word) {
@@ -6,7 +16,6 @@ const joinWordsWithSpace = function (words) {
 };
 
 console.log(joinWordsWithSpace(["apple", "banana", "cherry"]).trim());
-console.log = () => { };
 
 // countVowelsInWords(["hello", "world"]) => "eoo"
 const isVowel = function (letter) {
