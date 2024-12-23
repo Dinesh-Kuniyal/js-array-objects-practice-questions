@@ -1,3 +1,14 @@
+// reverseString(["apple", "banana", "cherry"]) => "elppaananabyrrehc"
+const reverseString = function (words) {
+  return words.reduce(function (reverseWord, word) {
+    return reverseWord.concat([...word].reverse().join(''));
+  }, '');
+};
+
+console.log(reverseString(['ab', 'bc', 'de']));
+console.log(reverseString(["apple", "banana", "cherry"]));
+console.log = () => { };
+
 // flattenArray([[1, 2], [3, 4], [5, 6]]) => [1, 2, 3, 4, 5, 6]
 const flattenArray = function (arrays) {
   return arrays.reduce(function (flattenArray, subArray) {
@@ -7,8 +18,6 @@ const flattenArray = function (arrays) {
 
 console.log(flattenArray([[1, 2], [3, 4], [5, 6]]));
 console.log(flattenArray([[1], [3, 4], [5, 6, 8], []]));
-
-console.log = () => { };
 
 const countFrequency = function (array, element) {
   return array.reduce(function (frequency, number) {
